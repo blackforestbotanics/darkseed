@@ -1,6 +1,7 @@
 """utils for the release process."""
 
 import sys
+import os
 from darkseed.version import __version__
 
 def update_version(version_file, version_str):
@@ -31,7 +32,7 @@ def version_error():
 def update_version_and_tag_for_release():
     """full process. utilized by root release script."""
 
-    print(f'current version is {__version__}')
+    print(f'current version is {__version__}.')
 
     if len(sys.argv) > 1:
         new_version = sys.argv[1]
@@ -51,3 +52,12 @@ enter new version: '''
     update_version('darkseed/version.py', new_version)
 
     print(f'version updated to {new_version}.')
+
+    os.system('git add -A')
+    os.system(f'git commit -m "release v{new_version}"')
+    os.system(f'git tag {new_version}')
+    os.system('git push --tags')
+
+    print('tags pushed.')
+
+    print('after CI runs at https://travis-ci.org/blackforestbotanics/darkseed, find published')

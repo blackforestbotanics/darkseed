@@ -1,0 +1,19 @@
+language: python
+python:
+- '3.6'
+- '3.7'
+dist: xenial
+install:
+- pip install pipenv
+- pipenv install --dev
+script:
+- pylint **/*.py
+- pelican
+deploy:
+- provider: pages
+  skip_cleanup: true
+  local-dir: ./output
+  keep_history: true
+  on:
+    branch: master
+    tags: true
