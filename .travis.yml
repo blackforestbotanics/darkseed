@@ -8,11 +8,16 @@ install:
 - pipenv install --dev
 script:
 - pylint **/*.py
-- pelican
+- python -m pytest --cov=darkseed
+- ./docs.py
+after_success:
+- codecov
 deploy:
 - provider: pages
   skip_cleanup: true
-  local-dir: ./output
+  local-dir: "./docs/html"
+  github_token:
+    secure: rizLJIUAhCOuUkP7FlIvzHfOtj1vsXb8uXlPiNELLLfSB4hFXMAJ+TkkkQi6QwTvW16nflsuB29dDzRPIUQgbxVIUfSkYIRpMOOZbHA5M3mLw4mnkJ5UHPrwEhP91eG0CjbwDftoZgVQXZVo4xAp1QW7r0Immnok/jaU9G43VYp5LTmpfIHlPv/+VTOwNYhl1KjBpvIEtAMxBtySkDX165BxRqSB3l9mgM/dcT4PANrd0evzVewH9uIHf3cfY4+0x+93R1IT4VT9LR2bbtUYuMmneX696haGSoyaxans5WDdV4gcWm0VxLaLxPv2Jgl2Ldg3MakWWiI06cN/jnatnZP6WH2QV/eULu00a1+FOiszNvjXwnpN7FK3ufkxYoKc6h+0/iJEgFETn1pt8aLMURt8IwYwyx/Lh2c3ETls3bxxIPlBsWO5aiD5gK9D4BX+5qB8UnYXcx35WIp4P4fwl84fik60Tq1sUU5dBBrLRktqE1szm35B1JYijm07ECeQLyVKyou163h407/zjJ4Ne7bM4Gvm7dzUqollz1bIJbqrZuOXdf+0Mj99f0S4DhBeBP+SRBDaVinRJSenDQ0yTyCFfTpldt25AOcEler0azfCE272p+9tSFSeedxMMLUIuUI9eVh8mWIRteaIsFdyyIKJ2wRi7fAf8Ae0Yh3d6b0=
   keep_history: true
   on:
     branch: master
