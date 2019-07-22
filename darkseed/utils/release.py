@@ -12,16 +12,6 @@ def update_version(version_file, version_str):
     with open(version_file, 'w') as f:
         f.write(version_doc)
 
-def commit_version():
-    """commit all pending changes."""
-
-def tag():
-    """
-    tag the commit.
-
-    this kicks of CI. if all passes, then this is released on PyPi.
-    """
-
 def version_error():
     """print that invalid semver was supplied and exit with error code 1."""
 

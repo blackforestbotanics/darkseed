@@ -8,5 +8,6 @@ pytest = "*"
 pytest-cov = "*"
 codecov = "*"
 sphinx = "*"
+pylint = "*"
 
 [packages]

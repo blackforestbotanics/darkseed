@@ -7,7 +7,7 @@ install:
 - pip install pipenv
 - pipenv install --dev
 script:
-# - pylint **/*.py
+- pylint **/*.py
 - python -m pytest --cov=darkseed
 - ./docs.py
 after_success:

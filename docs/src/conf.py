@@ -9,4 +9,4 @@ import os
 
 sys.path.insert(0, os.path.abspath('../..'))
 
-extensions = ['sphinx.ext.autodoc']
+extensions = ['sphinx.ext.autodoc'] # pylint: disable=invalid-name
