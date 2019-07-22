@@ -27,6 +27,13 @@ installing via `Pip <https://github.com/pypa/pip>`_ or `Pipenv <https://github.c
 
   pipenv install darkseed
 
+then add to your ``pelicanconf.py``:
+
+.. code:: python
+
+  import darkseed
+  THEME = darkseed.get_path()
+
 local development:
 
 .. code:: bash
